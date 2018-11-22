@@ -25,3 +25,24 @@ a {
   margin-right: 10px;
   overflow-y: auto;
 }
+
+#room-list {
+  float: right;
+  width: 300px;
+  height: 100px;
+  overflow: auto;
+}
+
+#room-list div {
+  border-bottom: 1px solid #eee;
+}
+
+#room-list div:hover {
+  background-color: #ddd;
+}
+
+#send-message {
+  width: 700px;
+  margin-bottom: 1em;
+  margin-right: 1em;
+}
