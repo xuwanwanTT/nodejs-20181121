@@ -1,4 +1,4 @@
-class chat {
+class Chat {
   constructor(socket) {
     this.socket = socket;
   }
@@ -13,10 +13,12 @@ class chat {
     });
   }
 
-  proccessCommand(command) {
+  processCommand(command) {
     let words = command.split(' ');
     command = words[0].substring(1, words[0].length).toLowerCase();
     let message = false;
+    console.log(words);
+    console.log(command);
     switch (command) {
       case 'join':
         words.shift();
@@ -26,6 +28,7 @@ class chat {
       case 'nick':
         words.shift();
         let name = words.join(' ');
+        console.log(this.socket.emit)
         this.socket.emit('nameAttempt', name);
         break;
       default:
