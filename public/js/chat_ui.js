@@ -9,14 +9,13 @@ const divSystemContentElement = (message) => {
 const processUserInput = (chatApp, socket) => {
   let message = $('#send-message').val();
   let systemMessage = null;
-  console.log(chatApp)
   if (message.charAt(0) == '/') {
     systemMessage = chatApp.processCommand(message);
     if (systemMessage) {
       $('#messages').append(divSystemContentElement(systemMessage));
     }
+    $('#send-message').val('');
   } else {
-    console.log('1: ', $('#room').text(), '2', message)
     chatApp.sendMessage($('#room').text(), message);
 
     $('#messages').append(divEscapedContentElement(message));
@@ -52,7 +51,6 @@ $(document).ready(function () {
 
   socket.on('rooms', (rooms) => {
     $('#room-list').empty();
-
     for (let room in rooms) {
       room = room.substring(1, room.length);
       if (room != '') {
